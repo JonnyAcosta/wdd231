@@ -1,3 +1,5 @@
+const baseUrl = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
 const park = {
   id: "F58C6D24-8D10-4573-9826-65D42B8B83AD",
   url: "https://www.nps.gov/yell/index.htm",
@@ -200,6 +202,49 @@ export const parkInfoLinks = [
   }
 ];
 
-export function getParkData() {
-  return park;
+export function getInfoLinks(data){
+  const withUpdatedImages = parkInfoLinks.map((item,index)=> {
+    item.image = data[index + 2].url;
+    return item;
+  });  return withUpdatedImages;
+}
+
+async function getJson(url){
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+  let data ={};
+  const repsonse = await fetch(baseUrl + url, options);
+  if(repsonse.ok){
+    data = await repsonse.json();
+  } else 
+    throw new Error("response not ok");
+  return data;
+}
+
+// export function getParkData() {
+//   return park;
+// }
+
+export async function getParkData() {
+  const parkData = await getJson("parks" + "?parkCode=glac");
+  return parkData.data[0];
+  //   let data = {}
+  //   const options = {
+  //   method: "GET",
+  //   headers: {
+  //     "X-Api-Key": apiKey
+  //   }
+  // };
+  // const response = await fetch(baseUrl + "parks" + "?parkCode=glac", options);
+  // // check to make sure the reponse was ok.
+  // if (response.ok) {
+  //   // convert to JSON
+  //   data = await response.json();
+  // } else throw new Error("response not ok")
+  //   return data.data[0];
+  
 }
