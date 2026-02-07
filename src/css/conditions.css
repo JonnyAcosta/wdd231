@@ -1,0 +1,41 @@
+.alerts > ul{
+    list-style: none;
+    padding: 0;
+}
+
+.alert{
+    margin: 0.5rem;
+    padding: 0,5rem 0 0.8rem 0;
+    gap: 1em;
+    display: flex;
+    border-bottom: 1px solid var(--bs-grey-3);
+}
+
+.alert p{
+    margin: 0;
+}
+
+.alert svg{
+    height:30px;
+    width: 30px;
+    margin: 0.25em;
+    flex: 0 0 auto;
+}
+
+.alert h3{
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.visitor > details li {
+    border-bottom: 1px solid var(--bs-gray-3);
+}
+
+.visitor > details > ul {
+    list-style: none;
+    padding: 0;
+}
+
+main {
+    padding: 1rem;
+}
