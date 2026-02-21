@@ -230,7 +230,7 @@ async function getJson(url){
 // }
 
 export async function getParkData() {
-  const parkData = await getJson("parks" + "?parkCode=glac");
+  const parkData = await getJson("parks" + "?parkCode=yell");
   return parkData.data[0];
   //   let data = {}
   //   const options = {
