@@ -1,5 +1,3 @@
-/* Title and logo styling */
-
 .site-title {
   display: flex;
   align-items: center;
@@ -174,4 +172,106 @@
 .global-nav.show{
   display: block;
   max-height:1000px;
+}
+
+.global-nav__section-heading{
+  font-size: 1.25rem;
+  padding: 1rem 0.625rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.global-nav__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #444;
+}
+
+.section-heading--green{
+  color: var(--bs-light-green);
+}
+
+.section-heading--blue{
+  color: var(--bs-light-blue);
+}
+
+.global-nav__split-button{
+  display:flex;
+  background-color: var(--bs-gray-800);
+}
+
+.global-nav__split-button > a{
+  flex:1;
+  padding: 1rem 0.625rem;
+  align-self:center;
+  display:block;
+}
+
+.global-nav__split-button > button{
+  border-left: 1px solid #444;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-nav__split-button > button:hover, .global-nav__split-button > a:hover {
+  background-color: var(--bs-gray-900);
+}
+
+.global-nav__submenu {
+  padding: 0;
+  list-style: none;
+  font-size: 0.8em;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.global-nav__submenu.show {
+  max-height: 600px;
+}
+
+.global-nav__submenu a {
+  display: block;
+  padding: 1rem 0.625rem;
+}
+
+.global-nav__submenu a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px){
+  .global-nav > h2 {
+    display: none;
+  }
+  .global-nav__submenu,
+  .global-nav__list{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .global-nav__split-button {
+    background-color: inherit;
+  }
+  /* Keep the submenu toggle button available on larger screens so users can open/close the submenu */
+  .global-nav__split-button > button {
+    display: flex;
+  }
+
+  /* When the menu is opened on desktop, keep submenus expanded so users see the full navigation */
+  .global-nav.show .global-nav__submenu {
+    max-height: fit-content;
+  }
+
+  .global-nav__submenu {
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+  }
+  .global-nav__submenu a {
+    padding: 0.625rem;
+  }
 }
