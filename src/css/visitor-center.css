@@ -1,0 +1,137 @@
+.vc-title {
+  border-bottom: 1px solid var(--bs-gray-400);
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+.vc-title svg {
+  width: 1em;
+  height: 1em;
+}
+.vc-info figure {
+  margin: 1em 3em;
+}
+.vc-info figcaption {
+  font-size: 0.8em;
+}
+.vc-info figcaption > span {
+  display: block;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.vc-details-list svg,
+.vc-gallery svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.75rem;
+  fill: #1a1a1a;
+}
+
+.vc-details-list details {
+  border: 1px solid #d8d8d8;
+  border-top: none;
+  margin: 0;
+  background: #fff;
+}
+
+.vc-details-list details:first-of-type {
+  border-top: 1px solid #d8d8d8;
+}
+
+.vc-details-list summary {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  padding: 0.8rem 0.9rem;
+  color: #222;
+  position: relative;
+  min-height: 52px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.vc-details-list summary:hover {
+  background-color: #f9f9f9;
+}
+
+.vc-details-list summary > svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  background: #111;
+  border-radius: 0.22rem;
+  padding: 0.13rem;
+  box-sizing: content-box;
+}
+
+.vc-details-list summary > svg use {
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+.vc-details-list summary > svg {
+  color: #fff;
+}
+
+.vc-details-list summary::marker,
+.vc-details-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.vc-details-list summary::after {
+  content: "\25BA";
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+  color: #222;
+  font-size: 0.95rem;
+  margin-left: 0.5rem;
+}
+
+.vc-details-list details[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+.vc-details-list .vc-details-content {
+  padding: 0.8rem 0.9rem 0.9rem;
+  color: #303030;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+#vcAmenities ul {
+  list-style: none;
+}
+#vcAmenities li {
+  margin-bottom: 1em;
+}
+
+.vc-gallery > h2 {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+}
+.vc-gallery ul {
+  list-style: none;
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.vc-gallery img {
+  width: 265px;
+  height: 265px; 
+  object-fit: cover;
+  object-position: center;
+}
+
+.vc-details-list summary::marker,
+.vc-details-list summary::-webkit-details-marker {
+  display: none;
+}
+
+/* no extra arrow background image, using text arrow in summary::after */

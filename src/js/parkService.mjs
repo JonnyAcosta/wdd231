@@ -258,3 +258,77 @@ export async function getParkVisitorCenter(code) {
   const parkData= await getJson(`visitorcenters?parkCode=${code}`);
   return parkData.data;
 }
+
+export async function getParkVisitorCenters() {
+  const parkData = await getJson("visitorcenters?parkCode=yell");
+  return parkData.data?.[0] || fallbackVisitorCenter;
+}
+
+export async function getParkVisitorCenterDetails(id) {
+  if (!id) {
+    return fallbackVisitorCenter;
+  }
+  try {
+    const parkData = await getJson(`visitorcenters?id=${encodeURIComponent(id)}`);
+    if (parkData?.data?.length) {
+      return parkData.data[0];
+    }
+  } catch (error) {
+    console.warn(`Visitor center API call failed for id=${id}, using fallback`, error);
+  }
+  return fallbackVisitorCenter;
+}
+
+const fallbackVisitorCenter = {
+  id: "1",
+  name: "Canyon Visitor Education Center",
+  description:
+    "Stop by the Canyon Visitor Education Center to learn more about the geologic story of the area, including the Yellowstone volcano, and view a room-size relief map of Yellowstone.",
+  directionsInfo:
+    "From Canyon Village, follow the Grand Loop Road north. The visitor center is on the east side of the road, with ample parking and nearby restroom facilities.",
+  amenities: ["Restrooms", "Museum exhibits", "Film showings", "Gift shop"],
+  contacts: {
+    phoneNumbers: [{ phoneNumber: "307-344-2812", type: "Voice" }],
+    emailAddresses: [{ emailAddress: "yell_canyon@nps.gov" }]
+  },
+  addresses: [
+    {
+      postalCode: "82190",
+      city: "Yellowstone National Park",
+      stateCode: "WY",
+      line1: "Grand Loop Road",
+      type: "Physical"
+    },
+    {
+      postalCode: "82190",
+      city: "Yellowstone National Park",
+      stateCode: "WY",
+      line1: "PO Box 168",
+      type: "Mailing"
+    }
+  ],
+  images: [
+    {
+      url: "https://www.nps.gov/common/uploads/structured_data/3C7D5920-1DD8-B71B-0B83F012ED802CEA.jpg",
+      alt: "Canyon Visitor Education Center building exterior",
+      caption: "Canyon Visitor Education Center",
+      credit: "NPS Photo"
+    },
+    {
+      url: "https://www.nps.gov/common/uploads/structured_data/3C7D2FBB-1DD8-B71B-0BED99731011CFCE.jpg",
+      alt: "Map of Yellowstone displayed inside visitor center",
+      caption: "Yellowstone relief map",
+      credit: "NPS Photo"
+    }
+  ]
+};
+
+export async function getParkVisitorCentersDetails(code) {
+  try {
+    const parkData = await getJson(`visitorcenters?parkCode=${code}`);
+    if (parkData?.data?.length) return parkData.data[0];
+  } catch (error) {
+    console.warn("Visitor center API call failed, using fallback data", error);
+  }
+  return fallbackVisitorCenter;
+}
